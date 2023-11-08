@@ -34,7 +34,7 @@ ul li > ul {
 }
 
 @media only screen and (min-width: 1024px) {
-  nav:hover ul li > ul {
+  ul li:hover > ul {
     display: block;
   }
 }
@@ -88,10 +88,6 @@ a {
     top: 0;
     right: 100%;
     background-color: red;
-  }
-
-  .menu li:hover > ul {
-    display: block;
   }
 
   .hamburger:hover + .menu,
