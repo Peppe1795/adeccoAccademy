@@ -33,7 +33,7 @@ function progressBar() {
 
 progressBar();
 
-function CharCount(idInput, idSpan) {
+function charCount(idInput, idSpan) {
   const inputItem = document.getElementById(idInput);
   const spanItem = document.getElementById(idSpan);
 
@@ -77,9 +77,9 @@ btn.addEventListener("click", () => {
 });
 
 nomeInput.addEventListener("input", () => {
-  CharCount("nome", "numeroNome");
+  charCount("nome", "numeroNome");
 });
 
 cognomeInput.addEventListener("input", () => {
-  CharCount("cognome", "numeroCognome");
+  charCount("cognome", "numeroCognome");
 });
