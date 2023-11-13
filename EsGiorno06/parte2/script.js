@@ -9,7 +9,7 @@ function sum() {
   let inputs = form.querySelectorAll("input");
   let tot = 0;
 
-  inputs.forEach(function (input) {
+  inputs.forEach((input) => {
     tot += parseInt(input.value);
   });
 
