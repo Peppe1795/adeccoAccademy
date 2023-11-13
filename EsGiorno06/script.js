@@ -25,7 +25,7 @@ function progressBar() {
         i = 0;
       } else {
         width++;
-        progress.style.width = width + "%";
+        progress.style.width = `${width}%`;
       }
     }
   }
