@@ -17,23 +17,23 @@ function sum() {
   form.reset();
 }
 
-let inputCount = 3;
+let indexInput = 3;
 
 function create() {
   const newInput = document.createElement("input");
   newInput.setAttribute("type", "number");
-  newInput.setAttribute("id", `numero${inputCount}`);
+  newInput.setAttribute("id", `numero${indexInput}`);
 
   const newLabel = document.createElement("label");
-  newLabel.setAttribute("for", `numero${inputCount}`);
-  newLabel.textContent = `numero${inputCount}`;
+  newLabel.setAttribute("for", `numero${indexInput}`);
+  newLabel.textContent = `numero${indexInput}`;
 
   form.lastElementChild.insertAdjacentElement("beforebegin", newLabel);
   form.lastElementChild.insertAdjacentElement("beforebegin", newInput);
 
   somma.innerHTML = "";
 
-  inputCount++;
+  indexInput++;
 }
 
 btnSum.addEventListener("click", sum);
