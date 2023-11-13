@@ -68,7 +68,7 @@ btn.addEventListener("click", () => {
     case "BA":
       break;
     default:
-      alert("provincia errato");
+      alert("provincia errata");
       return;
   }
   alert("è tutto ok");
