@@ -1,0 +1,26 @@
+SELECT * FROM Hotel;
+
+SELECT * FROM Hotel_pren;
+
+SELECT * FROM Hotel_clienti;
+
+SELECT
+    Hotel.nome AS NomeHotel,
+    Hotel_pren.dt_ini_pren AS DataInizioPrenotazione,
+    Hotel_clienti.nome AS NomeCliente,
+    Hotel_clienti.cognome AS CognomeCliente
+FROM
+    Hotel
+LEFT JOIN
+    Hotel_pren ON Hotel.id_hotel = Hotel_pren.id_hotel
+LEFT JOIN
+    Hotel_clienti ON Hotel_pren.id_cliente = Hotel_clienti.id_cliente;
+
+SELECT
+    hotel.nome             AS nomehotel,
+    hotel_pren.dt_ini_pren AS datainizioprenotazione,
+    hotel_clienti.nome     AS nomecliente,
+    hotel_clienti.cognome  AS cognomecliente
+FROM hotel
+INNER JOIN hotel_pren ON hotel.id_hotel = hotel_pren.id_hotel
+INNER JOIN hotel_clienti ON hotel_pren.id_cliente = hotel_clienti.id_cliente;
