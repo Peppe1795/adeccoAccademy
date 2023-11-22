@@ -1,0 +1,14 @@
+<div>
+  <label for="inputNumber">Inserisci un numero:</label>
+  <input type="number" id="inputNumber" [(ngModel)]="listType">
+
+  <button (click)="checkNumber()">Esegui</button>
+
+  <h2 *ngIf="showList">{{ listTitle }}</h2>
+  <ul *ngIf="showList">
+    <li *ngFor="let link of linkList">
+      {{ link.titolo }} - {{ link.link }}
+    </li>
+  </ul>
+  <div *ngIf="showWarning">Attenzione: Valore non valido!</div>
+</div>
