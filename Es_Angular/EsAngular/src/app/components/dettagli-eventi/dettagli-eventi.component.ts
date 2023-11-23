@@ -32,7 +32,7 @@ export class DettagliEventiComponent implements OnInit {
             }
           });
       } else {
-        alert('Valore non valido');
+        console.log('Errore nella Fetch');
       }
     });
   }
