@@ -1,0 +1,10 @@
+<div *ngIf="evento">
+  <h2>{{ evento.titolo }}</h2>
+  <div [innerHTML]="evento.descrizione"></div>
+
+  <p>{{evento.data_inizio}}</p>
+  <p>{{evento.data_fine}}</p>
+  <p>{{evento.max_iscritti}}</p>
+
+  <img src="{{evento.immagine}}" alt="stampante3D">
+</div>

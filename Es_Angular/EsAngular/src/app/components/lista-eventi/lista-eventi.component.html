@@ -1,0 +1,5 @@
+<ul>
+  <li *ngFor="let evento of eventi" (click)="mostraDettagli(evento.id)">
+    {{ evento.titolo }}
+  </li>
+</ul>
