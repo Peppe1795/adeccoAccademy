@@ -3,9 +3,8 @@ import Previsioni from './previsioni'
 import Somma from './es'
 
 export default function Home() {
-  const par1:number = 10;
-  const par2:number = 20;
-  const par3: string = '/percorso-dell-immagine.jpg';
+  const par1: number = 10;
+  const par2: number = 20;
   return (
     <main className="flex min-h-screen flex-col items-center justify-between p-24">
       <div className="z-10 max-w-5xl w-full items-center justify-between font-mono text-sm lg:flex">
@@ -31,7 +30,7 @@ export default function Home() {
               priority
             />
           </a>
-       <Previsioni previsioni='ciao'/>
+          <Previsioni previsioni='ciao' />
         </div>
       </div>
 
@@ -44,7 +43,7 @@ export default function Home() {
           height={37}
           priority
         />
-         <Somma num1={par1} num2={par2} img='https://cdn.pixabay.com/photo/2023/06/27/10/51/pier-8091934_1280.jpg' />
+        <Somma num1={par1} num2={par2} img='https://cdn.pixabay.com/photo/2023/06/27/10/51/pier-8091934_1280.jpg' />
       </div>
 
       <div className="mb-32 grid text-center lg:max-w-5xl lg:w-full lg:mb-0 lg:grid-cols-4 lg:text-left">
