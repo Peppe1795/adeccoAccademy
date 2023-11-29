@@ -6,18 +6,17 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
     <style>
-        .yellow-bg {
+        .giallo {
             background-color: yellow;
         }
 
-        .red-bg {
+        .rosso {
             background-color: red;
         }
 
-        .column {
-            float: left;
-            width: 100px;
-            padding: 10px;
+        .disposizione {
+            display: flex;
+            flex-direction: column;
         }
     </style>
 </head>
@@ -33,9 +32,9 @@
 
     for ($i = 0; $i < count($numeri); $i++) {
 
-        $bg_class = ($numeri[$i] % 2 == 0) ? 'yellow-bg' : 'red-bg';
+        $bg_class = ($numeri[$i] % 2 == 0) ? 'giallo' : 'rosso';
 
-        echo "<div class='column $bg_class'>" . $numeri[$i] . "</div>";
+        echo "<div class='disposizione $bg_class'>" . $numeri[$i] . "</div>";
     }
 
     ?>
