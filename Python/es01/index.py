@@ -15,4 +15,4 @@ for idx in lista:
     numero = int(idx)
     somma += numero
 
-print(somma)
+print(f"La somma dei numeri che hai inserito è {somma}")
