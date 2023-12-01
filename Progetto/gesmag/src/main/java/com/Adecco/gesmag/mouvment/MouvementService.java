@@ -59,7 +59,7 @@ public class MouvementService {
 		return rp.findAll(pageable);
 	}
 
-	public Mouvement findById(UUID id) {
+	public Mouvement findMouvementById(UUID id) {
 		return rp.findById(id).orElseThrow(() -> new NotFoundException(id));
 	}
 
@@ -74,7 +74,8 @@ public class MouvementService {
 	}
 
 	public void findByIdAndDelete(UUID id) {
-		Mouvement found = this.findById(id);
+		Mouvement found = rp.findById(id)
+				.orElseThrow(() -> new NotFoundException("Mouvement con ID " + id + " non trovato"));
 		rp.delete(found);
 	}
 

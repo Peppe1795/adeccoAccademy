@@ -6,7 +6,7 @@ import java.util.UUID;
 import org.hibernate.annotations.CreationTimestamp;
 
 import com.Adecco.gesmag.product.Product;
-import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 
 import jakarta.persistence.CascadeType;
 import jakarta.persistence.Entity;
@@ -37,7 +37,7 @@ public class Mouvement {
 
 	@OneToOne(cascade = CascadeType.ALL, fetch = FetchType.LAZY)
 	@JoinColumn(name = "idProduct")
-	@JsonIgnoreProperties("mouvement")
+	@JsonIgnore
 	private Product product;
 
 	private double prezzo;

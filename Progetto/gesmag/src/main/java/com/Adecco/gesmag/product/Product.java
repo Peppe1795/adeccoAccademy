@@ -3,7 +3,7 @@ package com.Adecco.gesmag.product;
 import java.util.UUID;
 
 import com.Adecco.gesmag.mouvment.Mouvement;
-import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 
 import jakarta.persistence.Entity;
 import jakarta.persistence.FetchType;
@@ -40,7 +40,7 @@ public class Product {
 	private int quantitaAcquistata;
 
 	@OneToOne(mappedBy = "product", fetch = FetchType.LAZY)
-	@JsonIgnoreProperties("product")
+	@JsonIgnore
 	private Mouvement mouvement;
 
 	public Product(String codeProduct, String descrizione, String um, double prezzo, double prezzoAcquisto,

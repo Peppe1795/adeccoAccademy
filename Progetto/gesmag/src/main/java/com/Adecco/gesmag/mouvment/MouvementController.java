@@ -28,16 +28,16 @@ public class MouvementController {
 	}
 
 	@GetMapping("/{mouvementId}")
-	public Mouvement findById(UUID id) {
-		return srv.findById(id);
+	public Mouvement findById(@PathVariable UUID mouvementId) {
+		return srv.findMouvementById(mouvementId);
 	}
 
-	@GetMapping("/{nomeCliente}")
+	@GetMapping("/cliente/{nomeCliente}")
 	public Mouvement getByNomeCliente(@PathVariable String nomeCliente) {
 		return srv.findByNomeCliente(nomeCliente);
 	}
 
-	@GetMapping("/{codiceMovimento}")
+	@GetMapping("/codice/{codiceMovimento}")
 	public Mouvement getByCodiceMovimento(@PathVariable String codiceMovimento) {
 		return srv.findByCodiceMouvement(codiceMovimento);
 	}
