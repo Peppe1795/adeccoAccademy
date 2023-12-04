@@ -15,10 +15,6 @@ const ListaProdotti: React.FC = () => {
         { id: 3, nome: 'Prodotto 3', prezzo: 30 },
     ];
 
-    return renderListaProdotti(prodotti);
-};
-
-function renderListaProdotti(prodotti: Prodotto[]) {
     return (
         <div className="max-w-3xl mx-auto p-4">
             <h1 className="text-3xl font-bold mb-4 text-center">Lista dei Prodotti</h1>
@@ -38,7 +34,7 @@ function renderListaProdotti(prodotti: Prodotto[]) {
                             <td className="py-3 px-4 border-b">{prodotto.nome}</td>
                             <td className="py-3 px-4 border-b">{prodotto.prezzo} €</td>
                             <td className="py-3 px-4 border-b">
-                                <Link href={`/prodotto/${prodotto.id}`} passHref>
+                                <Link href={`/prodotto/${prodotto.id}`}>
                                     <div className="text-blue-500 cursor-pointer hover:underline">Dettagli</div>
                                 </Link>
                             </td>
@@ -46,6 +42,15 @@ function renderListaProdotti(prodotti: Prodotto[]) {
                     ))}
                 </tbody>
             </table>
+
+            <div className="mt-4 flex justify-between">
+                <Link href="/listamovimenti">
+                    <div className="text-blue-500 cursor-pointer hover:underline">Movimenti</div>
+                </Link>
+                <Link href="/inventario">
+                    <div className="text-blue-500 cursor-pointer hover:underline">Inventario</div>
+                </Link>
+            </div>
         </div>
     );
 }
