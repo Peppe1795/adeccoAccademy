@@ -45,7 +45,12 @@ const ListaProdotti: React.FC = () => {
                         <th className="py-3 px-4 border-b">ID</th>
                         <th className="py-3 px-4 border-b">Codice</th>
                         <th className="py-3 px-4 border-b">Descrizione</th>
-                        <th className="py-3 px-4 border-b">Azione</th>
+                        <th className="py-3 px-4 border-b">Unita Di misura</th>
+                        <th className="py-3 px-4 border-b">Prezzo</th>
+                        <th className="py-3 px-4 border-b">Prezzo Acquisto</th>
+                        <th className="py-3 px-4 border-b">Quantita Giacenza</th>
+                        <th className="py-3 px-4 border-b">Quantita Venduta</th>
+                        <th className="py-3 px-4 border-b">Quantita Acquistata</th>
                     </tr>
                 </thead>
                 <tbody>
@@ -54,11 +59,12 @@ const ListaProdotti: React.FC = () => {
                             <td className="py-3 px-4 border-b">{prodotto.idProduct}</td>
                             <td className="py-3 px-4 border-b">{prodotto.codeProduct}</td>
                             <td className="py-3 px-4 border-b">{prodotto.descrizione}</td>
-                            <td className="py-3 px-4 border-b">
-                                <Link href={`/prodotto/${prodotto.idProduct}`}>
-                                    <div className="text-blue-500 cursor-pointer hover:underline">Dettagli</div>
-                                </Link>
-                            </td>
+                            <td className="py-3 px-4 border-b">{prodotto.um}</td>
+                            <td className="py-3 px-4 border-b">{prodotto.prezzo}</td>
+                            <td className="py-3 px-4 border-b">{prodotto.prezzoAcquisto}</td>
+                            <td className="py-3 px-4 border-b">{prodotto.quantitaGiacenza}</td>
+                            <td className="py-3 px-4 border-b">{prodotto.quantitaVenduta}</td>
+                            <td className="py-3 px-4 border-b">{prodotto.quantitaAcquistata}</td>
                         </tr>
                     ))}
                 </tbody>

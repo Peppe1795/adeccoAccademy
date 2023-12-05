@@ -1,22 +1,41 @@
 import React, { useState } from 'react';
+import axios from 'axios';
 import 'tailwindcss/tailwind.css';
-const ProdottoForm: React.FC = () => {
 
+interface Prodotto {
+    codeProduct: string;
+    descrizione: string;
+    um: string;
+    prezzo: number;
+    prezzoAcquisto: number;
+    quantitaGiacenza: number;
+    quantitaVenduta: number;
+    quantitaAcquistata: number;
+}
+
+const ProdottoForm: React.FC = () => {
     const [codice, setCodice] = useState('');
     const [descrizione, setDescrizione] = useState('');
     const [unitaDiMisura, setUnitaDiMisura] = useState('');
     const [prezzo, setPrezzo] = useState('');
     const [quantita, setQuantita] = useState('');
 
-    const handleSubmit = (e: React.FormEvent) => {
+    const handleSubmit = async (e: React.FormEvent) => {
         e.preventDefault();
-        console.log({
-            codice,
-            descrizione,
-            unitaDiMisura,
-            prezzo,
-            quantita,
-        });
+
+        try {
+            const response = await axios.post('http://localhost:3001/product', {
+                codeProduct: codice,
+                descrizione,
+                um: unitaDiMisura,
+                prezzo: parseFloat(prezzo),
+                quantita: parseInt(quantita, 10),
+            });
+
+            console.log('Prodotto inserito con successo:', response.data);
+        } catch (error) {
+            console.error('Errore durante l\'inserimento del prodotto:', error);
+        }
     };
 
     return (
