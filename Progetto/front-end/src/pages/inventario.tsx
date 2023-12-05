@@ -1,24 +1,52 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import Link from 'next/link';
+import axios from 'axios';
 import 'tailwindcss/tailwind.css';
 
+interface Prodotto {
+    idProduct: string;
+    codeProduct: string;
+    descrizione: string;
+    um: string;
+    prezzo: number;
+    prezzoAcquisto: number;
+    quantitaGiacenza: number;
+    quantitaVenduta: number;
+    quantitaAcquistata: number;
+}
+
 const Inventario = () => {
-    const prodotti = [
-        { id: 1, codice: 'P001', descrizione: 'Prodotto A', prezzoAcquisto: 50, giacenza: 20 },
-        { id: 2, codice: 'P002', descrizione: 'Prodotto B', prezzoAcquisto: 30, giacenza: 15 },
-    ];
+    const [prodotti, setProdotti] = useState<Prodotto[]>([]);
+
+    async function getProdotti() {
+        try {
+            const response = await axios.get('http://localhost:3001/product');
+
+            if (response.data && response.data.content && Array.isArray(response.data.content)) {
+                setProdotti(response.data.content);
+            } else {
+                console.error("La risposta non contiene un array sotto la chiave 'content':", response.data);
+            }
+        } catch (error) {
+            alert("Impossibile raggiungere il server!");
+        }
+    }
+
+    useEffect(() => {
+        getProdotti();
+    }, []);
 
     return (
         <div className="max-w-2xl mx-auto p-4">
             <h1 className="text-2xl font-bold mb-4">Inventario</h1>
             <ul className="space-y-2">
                 {prodotti.map((prodotto) => (
-                    <li key={prodotto.id} className="border p-4 rounded-md">
-                        <div>Codice: {prodotto.codice}</div>
+                    <li key={prodotto.idProduct} className="border p-4 rounded-md">
+                        <div>Codice: {prodotto.codeProduct}</div>
                         <div>Descrizione: {prodotto.descrizione}</div>
                         <div>Prezzo Acquisto: {prodotto.prezzoAcquisto}</div>
-                        <div>Giacenza: {prodotto.giacenza}</div>
-                        <div>Valore Giacenza: {prodotto.prezzoAcquisto * prodotto.giacenza}</div>
+                        <div>Giacenza: {prodotto.quantitaGiacenza}</div>
+                        <div>Valore Giacenza: {prodotto.prezzoAcquisto * prodotto.quantitaGiacenza}</div>
                     </li>
                 ))}
             </ul>

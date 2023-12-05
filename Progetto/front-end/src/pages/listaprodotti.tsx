@@ -1,19 +1,40 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import Link from 'next/link';
+import axios from 'axios';
 import 'tailwindcss/tailwind.css';
 
 interface Prodotto {
-    id: number;
-    nome: string;
+    idProduct: string;
+    codeProduct: string;
+    descrizione: string;
+    um: string;
     prezzo: number;
+    prezzoAcquisto: number;
+    quantitaGiacenza: number;
+    quantitaVenduta: number;
+    quantitaAcquistata: number;
 }
 
 const ListaProdotti: React.FC = () => {
-    const prodotti: Prodotto[] = [
-        { id: 1, nome: 'Prodotto 1', prezzo: 10 },
-        { id: 2, nome: 'Prodotto 2', prezzo: 20 },
-        { id: 3, nome: 'Prodotto 3', prezzo: 30 },
-    ];
+    const [prodotti, setProdotti] = useState<Prodotto[]>([]);
+
+    async function getProdotti() {
+        try {
+            const response = await axios.get('http://localhost:3001/product');
+
+            if (response.data && response.data.content && Array.isArray(response.data.content)) {
+                setProdotti(response.data.content);
+            } else {
+                console.error("La risposta non contiene un array sotto la chiave 'content':", response.data);
+            }
+        } catch (error) {
+            alert("Impossibile raggiungere il server!");
+        }
+    }
+
+    useEffect(() => {
+        getProdotti();
+    }, []);
 
     return (
         <div className="max-w-3xl mx-auto p-4">
@@ -29,12 +50,12 @@ const ListaProdotti: React.FC = () => {
                 </thead>
                 <tbody>
                     {prodotti.map((prodotto) => (
-                        <tr key={prodotto.id} className="hover:bg-gray-100">
-                            <td className="py-3 px-4 border-b">{prodotto.id}</td>
-                            <td className="py-3 px-4 border-b">{prodotto.nome}</td>
-                            <td className="py-3 px-4 border-b">{prodotto.prezzo} €</td>
+                        <tr key={prodotto.idProduct} className="hover:bg-gray-100">
+                            <td className="py-3 px-4 border-b">{prodotto.idProduct}</td>
+                            <td className="py-3 px-4 border-b">{prodotto.codeProduct}</td>
+                            <td className="py-3 px-4 border-b">{prodotto.descrizione}</td>
                             <td className="py-3 px-4 border-b">
-                                <Link href={`/prodotto/${prodotto.id}`}>
+                                <Link href={`/prodotto/${prodotto.idProduct}`}>
                                     <div className="text-blue-500 cursor-pointer hover:underline">Dettagli</div>
                                 </Link>
                             </td>
